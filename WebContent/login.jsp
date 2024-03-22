@@ -6,26 +6,73 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-
+     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+        
     <head>
         <%@include file="./header.jsp" %>
         <title>Login</title>
     </head>
+     <style>
+        body {
+            background-color: hsl(218, 41%, 15%);
+        }
 
+        .background-radial-gradient {
+            background-image: radial-gradient(650px circle at 0% 0%, hsl(218, 41%, 35%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%), radial-gradient(1250px circle at 100% 100%, hsl(218, 41%, 45%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .background-radial-gradient::before {
+            content: '';
+            height: 220px;
+            width: 220px;
+            top: -60px;
+            left: -130px;
+            background: radial-gradient(#44006b, #ad1fff);
+            overflow: hidden;
+            position: absolute;
+        }
+
+        .background-radial-gradient::after {
+            content: '';
+            border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+            bottom: -60px;
+            right: -110px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(#44006b, #ad1fff);
+            overflow: hidden;
+            position: absolute;
+        }
+
+        .bg-glass {
+            background-color: hsla(0, 0%, 100%, 0.9) !important;
+            backdrop-filter: saturate(200%) blur(25px);
+        }
+    </style>
+    
     <body>
 
         <!--Thẻ JSTL này đặt một biến có tên là "cookie" với giá trị là các cookie từ yêu cầu hiện tại.-->
         <c:set var="cookie" value="${pageContext.request.cookies}"/>
 
-        <section class="vh-100">
-            <div class="container-fluid h-custom">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-md-9 col-lg-6 col-xl-5">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-                             class="img-fluid" alt="Sample image">
+        <section class="background-radial-gradient overflow-hidden">
+            <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+                <div class="row gx-lg-5 align-items-center mb-5">
+                    <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+                        <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                        The best system <br />
+                        <span style="color: hsl(218, 81%, 75%)">for your management</span>
+                    </h1>
+                    <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                        We have planned to develop a revenue and expenditure management module with the primary objective of streamlining the process and minimising the time required for financial management.
+                    </p>
                     </div>
-                    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-
+                    
+                    <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                            <div class="card bg-glass">
+                                <div class="card-body px-4 py-5 px-md-5">
                         <!--Link tới Servlet doGet LoginController sau đó qua form login.jsp rồi tiến hành về lại doPost của Servlet-->
                         <form action="./login" method="post" id="form-login">
                             <div class="d-flex align-items-center mb-3 pb-1">
@@ -76,7 +123,9 @@
                             </div>
 
                         </form>
+                                </div>
                     </div>
+                                    </div>
                 </div>
             </div>
             <%@include file="./footer.jsp" %>
